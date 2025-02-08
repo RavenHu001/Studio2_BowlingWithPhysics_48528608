@@ -4,10 +4,12 @@ using UnityEngine.Events;
 public class BallCOntroller : MonoBehaviour
 {
     //variable for detected ball is lunched
-    private bool isLunched = false;
     [SerializeField] private float force = 1f;
     [SerializeField] private InputManager inputManager;
+    //add transform of ballAnchor
+    [SerializeField] private Transform ballAnchor;
 
+    private bool isLunched;
     private Rigidbody ballRb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +18,11 @@ public class BallCOntroller : MonoBehaviour
         ballRb = GetComponent<Rigidbody>();
         //Set listener of press space in code 
         inputManager.onSpacePressed.AddListener(LaunchBall);
+        //Set parent and local position
+        transform.parent = ballAnchor;
+        transform.localPosition = Vector3.zero;
+        //set to kinematic when ball is hold
+        ballRb.isKinematic = true;
     }
     private void LaunchBall() 
     {
@@ -23,6 +30,10 @@ public class BallCOntroller : MonoBehaviour
         if (isLunched) return;
         //not lunched, lunch
         isLunched = true;
+        //set parent to null when ball lunched
+        transform.parent = null;
+        //set not isKinematic when ball lunched
+        ballRb.isKinematic=false;
 
         //when listener is activated, run add force to ballRB
         ballRb.AddForce(transform.forward*force,ForceMode.Impulse);
