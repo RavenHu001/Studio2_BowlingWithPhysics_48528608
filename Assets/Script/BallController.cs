@@ -8,6 +8,8 @@ public class BallCOntroller : MonoBehaviour
     [SerializeField] private InputManager inputManager;
     //add transform of ballAnchor
     [SerializeField] private Transform ballAnchor;
+    //add transform of indicator
+    [SerializeField] private Transform launchIndicator;
 
     private bool isLunched;
     private Rigidbody ballRb;
@@ -36,6 +38,11 @@ public class BallCOntroller : MonoBehaviour
         ballRb.isKinematic=false;
 
         //when listener is activated, run add force to ballRB
-        ballRb.AddForce(transform.forward*force,ForceMode.Impulse);
+        //ballRb.AddForce(transform.forward*force,ForceMode.Impulse);
+
+        //update the add force in indicator's direction
+        ballRb.AddForce(launchIndicator.forward * force, ForceMode.Impulse);
+        //disable the launchIndicator
+        launchIndicator.gameObject.SetActive(false);
     }
 }
