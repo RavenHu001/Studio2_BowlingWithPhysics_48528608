@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BallCOntroller : MonoBehaviour
+public class BallController : MonoBehaviour
 {
     //variable for detected ball is lunched
     [SerializeField] private float force = 1f;
@@ -44,5 +44,17 @@ public class BallCOntroller : MonoBehaviour
         ballRb.AddForce(launchIndicator.forward * force, ForceMode.Impulse);
         //disable the launchIndicator
         launchIndicator.gameObject.SetActive(false);
+    }
+
+    public void ResetBall()
+    {
+        //reset to allow lunch again
+        isLunched=false;
+        ballRb.isKinematic = true;
+        launchIndicator.gameObject.SetActive(true);
+        transform.parent = ballAnchor;
+        transform.localPosition= Vector3.zero;
+        //need to set rotation of ball to zero
+        transform.rotation = Quaternion.identity;
     }
 }
