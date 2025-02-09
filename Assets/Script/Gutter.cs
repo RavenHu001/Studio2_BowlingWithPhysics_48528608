@@ -5,7 +5,7 @@ public class Gutter : MonoBehaviour
     private void OnTriggerEnter(Collider triggeredBody)
     {
         //add this for avoid get rigidbody form object who not have it.
-        if (triggeredBody.GetComponent<Rigidbody>() == null) return;
+        if (triggeredBody.GetComponent<Rigidbody>() == null||triggeredBody.GetComponent<Rigidbody>().isKinematic) return;
         //1.get RB of ball
         Rigidbody ballRB = triggeredBody.GetComponent<Rigidbody>();
         //2.get original veolocity Mangitude of ball

@@ -21,10 +21,13 @@ public class BallController : MonoBehaviour
         //Set listener of press space in code 
         inputManager.onSpacePressed.AddListener(LaunchBall);
         //Set parent and local position
-        transform.parent = ballAnchor;
-        transform.localPosition = Vector3.zero;
+        //transform.parent = ballAnchor;
+        //transform.localPosition = Vector3.zero;
         //set to kinematic when ball is hold
-        ballRb.isKinematic = true;
+        //ballRb.isKinematic = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        //reset ball
+        ResetBall();
     }
     private void LaunchBall() 
     {
