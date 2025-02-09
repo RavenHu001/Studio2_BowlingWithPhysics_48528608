@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-public class Fall : MonoBehaviour
+public class FallTrigger : MonoBehaviour
 {
     public UnityEvent OnPinFall = new();
     public bool isPinFallen = false;
