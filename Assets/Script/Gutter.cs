@@ -14,6 +14,6 @@ public class Gutter : MonoBehaviour
         ballRB.linearVelocity = Vector3.zero;
         ballRB.angularVelocity = Vector3.zero;
         //add force in forward direction of gutter,velocityMangitude is for keep realistic
-        ballRB.AddForce(transform.forward*velocityMangitude,ForceMode.VelocityChange);
+        ballRB.AddForce(transform.forward * velocityMangitude,ForceMode.VelocityChange);
     }
 }
